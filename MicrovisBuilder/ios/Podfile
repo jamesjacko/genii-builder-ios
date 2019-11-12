@@ -41,13 +41,3 @@ target 'MicrovisBuilder' do
 
   use_native_modules!
 end
-
-target 'MicrovisBuilder-tvOS' do
-  # Pods for MicrovisBuilder-tvOS
-
-  target 'MicrovisBuilder-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end

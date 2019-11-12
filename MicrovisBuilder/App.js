@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import * as watch from 'react-native-watch-connectivity-hive';
+import * as Watch from 'react-native-watch-connectivity-hive';
 import {
   SafeAreaView,
   StyleSheet,
@@ -38,8 +38,10 @@ class App extends React.Component {
 
   sendMessage() {
     const text = this.state.text
-    if (text.trim().lenth) {
-       watch.sendMessage({text}, (err, resp) => {
+
+    if (text.trim().length) {
+      console.log(Watch)
+       Watch.sendMessage({text}, (err, resp) => {
           if (!err) {
              console.log('responce received', resp)
           } else {
@@ -63,7 +65,8 @@ class App extends React.Component {
               </View>
             )}
             <View style={styles.body}>
-              <Button onPress={ this.sendMessage} title="Send" />
+              <TextInput value={ this.state.text } onChangeText = { (text) => this.setState({text: text}) } />
+              <Button onPress={ this.sendMessage } title="Send Message" />
             </View>
           </ScrollView>
         </SafeAreaView>
