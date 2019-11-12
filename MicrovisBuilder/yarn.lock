@@ -5254,6 +5254,11 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.11.0.tgz#b85dfecd48ad1ce469ff558a882ca8e8313928fa"
   integrity sha512-gbBVYR2p8mnriqAwWx9LbuUrShnAuSCNnuPGyc7GJrMVQtPDAh8iLpv7FRuMPFb56KkaVZIYSz1PrjI9q0QPCw==
 
+react-native-watch-connectivity-hive@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-watch-connectivity-hive/-/react-native-watch-connectivity-hive-0.2.5.tgz#ab3204bd67113f56dd79ee2633c506f1f33b55c5"
+  integrity sha512-BTKikP4R9s2Z94bArDssOViZvG7YHuzAkfGct7q1vAO9bDC7Qk25dlE0FvkblTxF0iMHf0FTjLayKSgmtTV85g==
+
 react-native@0.61.4:
   version "0.61.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.61.4.tgz#9ec6e8a2aa8eac57143dcfa39115c7d9a139bc2c"
