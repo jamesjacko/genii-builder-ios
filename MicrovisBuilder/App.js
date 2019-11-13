@@ -20,16 +20,18 @@ import {
 } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Header from './components/Header'
+import GeneProperty from './components/GeneProperty'
+
 class App extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       text: "Hello"
     }
@@ -52,25 +54,20 @@ class App extends React.Component {
   }
   render(){
     return (
-      <>
-        <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            <Header />
-            {global.HermesInternal == null ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Engine: Hermes</Text>
-              </View>
-            )}
-            <View style={styles.body}>
-              <TextInput value={ this.state.text } onChangeText = { (text) => this.setState({text: text}) } />
-              <Button onPress={ this.sendMessage } title="Send Message" />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </>
+
+        <Text style={ styles.sectionTitle }>Hello</Text>
+        <View style={ styles.row }>
+          
+          <GeneProperty />
+          <GeneProperty />
+          <GeneProperty />
+          <GeneProperty />
+          <GeneProperty />
+        </View>
+            
+        
+      </ SafeAreaView>
     );
   }
 };
@@ -112,6 +109,9 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  row: {
+    flexDirection: 'row'
+  }
 });
 
 export default App;
