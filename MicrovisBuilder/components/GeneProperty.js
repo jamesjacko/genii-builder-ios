@@ -6,8 +6,11 @@ class GeneProperty extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            pan: new Animated.ValueXY()
-        }
+          showDraggable: true,
+          dropAreaValues: null,
+          pan: new Animated.ValueXY(),
+          opacity: new Animated.Value(1)
+        };
         this._val = { x: 0, y: 0 };
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture) => true,
@@ -15,12 +18,27 @@ class GeneProperty extends React.Component{
                 null, { dx: this.state.pan.x, dy: this.state.pan.y }
             ]),
             onPanResponderRelease: (e, gesture) => {
-                Animated.spring(this.state.pan, {
-                  toValue: { x: 0, y: 0 },
-                  friction: 5
-                }).start();
-              }
+              if (this.isDropArea(gesture)) {
+                Animated.timing(this.state.opacity, {
+                toValue: 0,
+                duration: 1000
+              }).start(() =>
+                this.setState({
+                   showDraggable: false
+                })
+              );
+            } else {
+              Animated.spring(this.state.pan, {
+                toValue: { x: 0, y: 0 },
+                friction: 5
+              }).start();
+            }
+          }
         });
+        
+    }
+    isDropArea(gesture) {
+      return gesture.moveY < 200;
     }
 
     render() {

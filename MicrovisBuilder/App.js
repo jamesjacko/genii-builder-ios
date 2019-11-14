@@ -57,13 +57,12 @@ class App extends React.Component {
         <SafeAreaView>
 
         <Text style={ styles.sectionTitle }>Hello</Text>
+        <View style= { styles.dropZone }>
+          </View>
         <View style={ styles.row }>
+          <GeneProperty />
+          <GeneProperty />
           
-          <GeneProperty />
-          <GeneProperty />
-          <GeneProperty />
-          <GeneProperty />
-          <GeneProperty />
         </View>
             
         
@@ -111,6 +110,19 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row'
+  },
+  dropZone: {
+    height: 200,
+    backgroundColor: "#00334d"
+  },
+  text: {
+    marginTop: 25,
+    marginLeft: 5,
+    marginRight: 5,
+    textAlign: "center",
+    color: "#fff",
+    fontSize: 25,
+    fontWeight: "bold"
   }
 });
 
