@@ -8,6 +8,7 @@
 
 import React from 'react';
 import * as Watch from 'react-native-watch-connectivity-hive';
+import data from './data.json';
 import {
   SafeAreaView,
   StyleSheet,
@@ -30,7 +31,7 @@ import Header from './components/Header'
 import GeneProperty from './components/GeneProperty'
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       text: "Hello"
@@ -38,34 +39,34 @@ class App extends React.Component {
     this.sendMessage = this.sendMessage.bind(this);
   }
 
-  sendMessage() {
-    const text = this.state.text
+  sendMessage(text) {
 
-    if (text.trim().length) {
-      console.log(Watch)
-       Watch.sendMessage({text}, (err, resp) => {
-          if (!err) {
-             console.log('responce received', resp)
-          } else {
-             console.error('error sending message to watch', err)
-          }
-       })
-    }
+
+    Watch.sendMessage({ text }, (err, resp) => {
+      if (!err) {
+        console.log('responce received', resp)
+      } else {
+        console.error('error sending message to watch', err)
+      }
+    })
+
   }
-  render(){
+  render() {
     return (
-        <SafeAreaView>
+      <SafeAreaView>
 
-        <Text style={ styles.sectionTitle }>Hello</Text>
-        <View style= { styles.dropZone }>
-          </View>
-        <View style={ styles.row }>
-          <GeneProperty />
-          <GeneProperty />
-          
+        <Text style={styles.sectionTitle}>Hello</Text>
+        <Button onPress={() => this.sendMessage(data.imageData)} title="Send Image Data"></Button>
+        <Button onPress={() => this.sendMessage(data.imageData2)} title="Send Image Data2"></Button>
+        <View style={styles.dropZone}>
         </View>
-            
-        
+        <View style={styles.row}>
+          <GeneProperty />
+          <GeneProperty />
+
+        </View>
+
+
       </ SafeAreaView>
     );
   }

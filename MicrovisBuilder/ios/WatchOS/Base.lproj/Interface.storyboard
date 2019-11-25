@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
@@ -11,10 +11,10 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchOS" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Label" id="R7B-gi-obI"/>
+                        <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="qvG-hC-CEU"/>
                     </items>
                     <connections>
-                        <outlet property="label" destination="R7B-gi-obI" id="TYc-Fo-fpB"/>
+                        <outlet property="imageView" destination="qvG-hC-CEU" id="1jg-DM-6Iu"/>
                     </connections>
                 </controller>
             </objects>

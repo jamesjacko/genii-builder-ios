@@ -5,8 +5,7 @@ import Foundation
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
   @IBOutlet weak var label: WKInterfaceLabel!
-  @IBOutlet weak var pongs: WKInterfaceLabel!
-  @IBOutlet weak var image: WKInterfaceImage!
+  @IBOutlet weak var imageView: WKInterfaceImage!
   var numPongs: Int = 0
   
   var session: WCSession?
@@ -21,6 +20,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
       self.session?.delegate = self
       self.session?.activate()
     }
+   
+   
   }
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +34,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   
   override func didDeactivate() {
     super.didDeactivate()
+    
   }
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -40,9 +42,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
   
   func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-    print("watch received message", message);
     let text = message["text"] as! String
-    self.label.setText(text)
+    self.showImage(base64: text)
   }
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +53,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
     let currentTimestamp: Double = Date().timeIntervalSince1970 * 1000
     let decodedData = Data(base64Encoded: messageData, options: NSData.Base64DecodingOptions(rawValue: 0))
-    self.image.setImageData(decodedData)
+    self.imageView.setImageData(decodedData)
     let json : String = JSONStringify(["currentTimestamp": currentTimestamp])
     let data : Data = json.data(using: String.Encoding.utf8)!
     replyHandler(data)
@@ -64,7 +65,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   
   func session(_ session: WCSession, didReceive file: WCSessionFile) {
     let data: Data? = try? Data(contentsOf: file.fileURL)
-    self.image.setImageData(data)
+    self.imageView.setImageData(data)
   }
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +89,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     session.sendMessage(["message": "ping"], replyHandler: { (dict) in
       print("Received pong")
       self.numPongs += 1
-      self.pongs.setText(String(format: "%i Pongs", self.numPongs))
       self.sendPing(session)
     }, errorHandler: nil)
   }
@@ -130,6 +130,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
       
     }
     return ""
+  }
+  
+  
+  func showImage(base64: String){
+    let imageData = Data(base64Encoded: base64)
+    let image = UIImage(data: imageData!)
+    self.imageView.setImage(image);
   }
   
 }
