@@ -1701,6 +1701,11 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.3.tgz#42d837d5239688d55f303003a508230fa6727142"
   integrity sha512-i70fVHhmV3DtTl6nqvZOnIjbY0Pe4kAUjwHj8z0zAdgBtYrJyYwLKCCuRBQ5ppkyL0AkN7HKRnETdmdp1zqNXw==
 
+chroma-js@^1.4.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-1.4.1.tgz#eb2d9c4d1ff24616be84b35119f4d26f8205f134"
+  integrity sha512-jTwQiT859RTFN/vIf7s+Vl/Z2LcMrvMv3WUFmd/4u76AdlFC0NTNgqEEFPcRiHmAswPsMiQEDZLM8vX8qXpZNQ==
+
 ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
@@ -2227,6 +2232,11 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
+
+escape-string-regexp@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -3134,7 +3144,7 @@ inquirer@^7.0.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -4547,6 +4557,11 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
+murv-component@../../murv-component/:
+  version "1.0.0"
+  dependencies:
+    chroma-js "^1.4.0"
+
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
@@ -5259,6 +5274,14 @@ react-native-watch-connectivity-hive@^0.2.5:
   resolved "https://registry.yarnpkg.com/react-native-watch-connectivity-hive/-/react-native-watch-connectivity-hive-0.2.5.tgz#ab3204bd67113f56dd79ee2633c506f1f33b55c5"
   integrity sha512-BTKikP4R9s2Z94bArDssOViZvG7YHuzAkfGct7q1vAO9bDC7Qk25dlE0FvkblTxF0iMHf0FTjLayKSgmtTV85g==
 
+react-native-webview@^7.5.1:
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.5.1.tgz#01b026c1110d7548123460cc640fb1d4227a0f54"
+  integrity sha512-lFpa4m8CMapk6vbZf2GiQDGxsQSRrKoVElTFCkDI5BEl5/a14ClASnJdIyr6U6uYj7ZjcAYsaqNtz86BJqyRVQ==
+  dependencies:
+    escape-string-regexp "2.0.0"
+    invariant "2.2.4"
+
 react-native@0.61.4:
   version "0.61.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.61.4.tgz#9ec6e8a2aa8eac57143dcfa39115c7d9a139bc2c"
@@ -5578,6 +5601,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-webview@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/rn-webview/-/rn-webview-0.1.0.tgz#18a538c281d808cecba94a6e40caaef22d73cb83"
+  integrity sha512-hXPcqXe7NVCAuQ1YGtEH4Z1xfUe/79ey1+3pj3kEBcysVadKrJk33JamzEFqFWJ7xGS5aFeXmn9nXKpVzW7X0Q==
 
 rsvp@^4.8.4:
   version "4.8.5"

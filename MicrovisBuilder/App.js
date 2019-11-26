@@ -9,6 +9,7 @@
 import React from 'react';
 import * as Watch from 'react-native-watch-connectivity-hive';
 import data from './data.json';
+import GeneBuilder from './components/GeneBuilder'
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,8 +28,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Header from './components/Header'
-import GeneProperty from './components/GeneProperty'
+import Header from './components/Header';
+import GeneProperty from './components/GeneProperty';
+import { WebView } from 'react-native-webview';
 
 class App extends React.Component {
   constructor() {
@@ -54,17 +56,13 @@ class App extends React.Component {
   render() {
     return (
       <SafeAreaView>
-
-        <Text style={styles.sectionTitle}>Hello</Text>
         <Button onPress={() => this.sendMessage(data.imageData)} title="Send Image Data"></Button>
         <Button onPress={() => this.sendMessage(data.imageData2)} title="Send Image Data2"></Button>
-        <View style={styles.dropZone}>
-        </View>
-        <View style={styles.row}>
-          <GeneProperty />
-          <GeneProperty />
+        
+        <ScrollView>
+          <GeneBuilder sendMessage={this.sendMessage} />
+        </ScrollView>
 
-        </View>
 
 
       </ SafeAreaView>
@@ -124,7 +122,25 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 25,
     fontWeight: "bold"
+  },
+  webView: {
+    marginTop: 20,
+    height: 200,
+    maxHeight: 200,
+    flex: 1
   }
 });
 
 export default App;
+
+
+/*
+
+<View style={styles.dropZone}>
+        </View>
+        <View style={styles.row}>
+          <GeneProperty />
+          <GeneProperty />
+
+        </View>
+ */
