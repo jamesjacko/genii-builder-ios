@@ -15,8 +15,8 @@ class GeneBuilder extends Component {
     }
 
     getURI(){
-        // let uri = 'https://jamesjacko.github.io/murvRenderer/?';
-        let uri = "http://localhost:3001/?"
+        let uri = 'http://jamesjacko.github.io/murvRenderer/?';
+        // let uri = "http://localhost:3001/?"
         if(this.state.path_mode){
             uri += "path_mode=" + Object.keys(Gene.path_mode)[this.state.path_mode] + "&";
         }
@@ -29,7 +29,7 @@ class GeneBuilder extends Component {
         if(this.state.object_rotation){
             uri += "object_rotation=" + Object.keys(Gene.object_rotation)[this.state.object_rotation] + "&";
         }
-        console.log(uri);
+        console.log(uri); 
         return uri;
     }
 
@@ -37,10 +37,10 @@ class GeneBuilder extends Component {
         return (
 
             <View>
-                <View style={{height: 400}}>
+                <View style={{height: 200}}>
                     <WebView source={{ uri: this.getURI() }} style={styles.webView}
                         useWebKit="true"
-                        injectedJavaScript={`const meta = document.createElement('meta'); meta.setAttribute('content', 'width=width, initial-scale=0.5, maximum-scale=0.5, user-scalable=2.0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `}
+                        injectedJavaScript={`const meta = document.createElement('meta'); meta.setAttribute('content', 'width=width, initial-scale=0.5, maximum-scale=0.5, user-scalable=2.0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); true`}
                         onMessage={(event) => this.sendMessage(JSON.parse(event.nativeEvent.data).data)}
                     />
                 </View> 
@@ -67,8 +67,8 @@ export default GeneBuilder
 const styles = StyleSheet.create({
     webView: {
         marginTop: 20,
-        height: 400,
-        maxHeight: 400,
+        height: 200,
+        maxHeight: 200,
         width:400
       }
     });
