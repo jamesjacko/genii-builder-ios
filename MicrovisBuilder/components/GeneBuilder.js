@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Picker, View, StyleSheet } from 'react-native';
-import MURV, { Gene } from 'murv-component';
-import Config from '../data/config';
-import GeneExample from '../data/gene';
+import { Text, View, StyleSheet } from 'react-native';
+import { Gene } from 'murv-component';
+import { TableView, Section, Cell } from 'react-native-tableview-simple';
 import WebView from 'react-native-webview';
-import { sendMessage } from 'react-native-watch-connectivity-hive';
 
 
 class GeneBuilder extends Component {
@@ -45,24 +43,20 @@ class GeneBuilder extends Component {
                         injectedJavaScript={`const meta = document.createElement('meta'); meta.setAttribute('content', 'width=width, initial-scale=0.5, maximum-scale=0.5, user-scalable=2.0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `}
                         onMessage={(event) => this.sendMessage(JSON.parse(event.nativeEvent.data).data)}
                     />
-                </View>
+                </View> 
+                <TableView>
+                    <Section>
+                    {
+                        this.state.properties.map((key) => {
+                            let property = Gene[key]
+                            return (
+                                <CellVariant key={ key } title = { key } />
+                            )
+                        })
+                    }
+                    </Section>
+                </TableView>
                 
-                {
-                    this.state.properties.map((key) => {
-                        let property = Gene[key]
-                        return (
-                            <Picker
-                                mode="dropdown"
-                                selectedValue={this.state[key] || 1}
-                                key={ key }
-                                onValueChange={(value) => { this.setState({ [key] : value }) }}>
-                                {Object.values(property).map((key) => {
-                                    return (<Picker.Item label={Object.keys(property)[key]} value={parseInt(key)} key={parseInt(key)} />) //if you have a bunch of keys value pair
-                                })}
-                            </Picker>
-                        )
-                    })
-                }
             </View>
         )
     }
@@ -78,3 +72,35 @@ const styles = StyleSheet.create({
         width:400
       }
     });
+
+
+const CellVariant = (props) => (
+    <Cell
+        {...props}
+        cellContentView={
+        <View
+            style={{ alignItems: 'center', flexDirection: 'row', flex: 1, paddingVertical: 10 }}
+        >
+            <Text
+            allowFontScaling
+            numberOfLines={1}
+            style={{ flex: 1, fontSize: 20 }}
+            >
+            {props.title}
+            </Text>
+        </View>
+        }
+    />
+    );
+
+    /*
+<Picker
+                                mode="dropdown"
+                                selectedValue={this.state[key] || 1}
+                                key={ key }
+                                onValueChange={(value) => { this.setState({ [key] : value }) }}>
+                                {Object.values(property).map((key) => {
+                                    return (<Picker.Item label={Object.keys(property)[key]} value={parseInt(key)} key={parseInt(key)} />) //if you have a bunch of keys value pair
+                                })}
+                            </Picker>
+    */
