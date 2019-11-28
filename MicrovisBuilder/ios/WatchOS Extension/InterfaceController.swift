@@ -44,6 +44,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
     let text = message["text"] as! String
     self.showImage(base64: text)
+    WKInterfaceDevice().play(.success)
   }
   
   ////////////////////////////////////////////////////////////////////////////////

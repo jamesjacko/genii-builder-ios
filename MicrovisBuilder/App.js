@@ -45,27 +45,24 @@ class App extends React.Component {
 
 
     Watch.sendMessage({ text }, (err, resp) => {
-      if (!err) {
-        console.log('responce received', resp)
-      } else {
-        console.error('error sending message to watch', err)
-      }
+      // if (!err) {
+      //   console.log('responce received', resp)
+      // } else {
+      //   console.error('error sending message to watch', err)
+      // }
     })
 
   }
   render() {
     return (
-      <SafeAreaView>
-        <Button onPress={() => this.sendMessage(data.imageData)} title="Send Image Data"></Button>
-        <Button onPress={() => this.sendMessage(data.imageData2)} title="Send Image Data2"></Button>
-        
-        <ScrollView>
-          <GeneBuilder sendMessage={this.sendMessage} />
-        </ScrollView>
-
-
-
-      </ SafeAreaView>
+      <>
+        <StatusBar backgroundColor="blue" barStyle="light-content" style={{ flex: 1 }} />
+        <View>
+          <ScrollView>
+            <GeneBuilder sendMessage={this.sendMessage} />
+          </ScrollView>
+        </View>
+      </>
     );
   }
 };
