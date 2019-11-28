@@ -34,20 +34,12 @@ target 'MicrovisBuilder' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNTableView', :path => '../node_modules/react-native-tableview'
+
   target 'MicrovisBuilderTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
   use_native_modules!
-end
-
-target 'MicrovisBuilder-tvOS' do
-  # Pods for MicrovisBuilder-tvOS
-
-  target 'MicrovisBuilder-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

@@ -7,6 +7,9 @@
  */
 
 import React from 'react';
+import * as Watch from 'react-native-watch-connectivity-hive';
+import data from './data.json';
+import GeneBuilder from './components/GeneBuilder'
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,62 +17,54 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  TextInput
 } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+import Header from './components/Header';
+import GeneProperty from './components/GeneProperty';
+import { WebView } from 'react-native-webview';
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      text: "Hello"
+    }
+    this.sendMessage = this.sendMessage.bind(this);
+  }
+
+  sendMessage(text) {
+
+
+    Watch.sendMessage({ text }, (err, resp) => {
+      // if (!err) {
+      //   console.log('responce received', resp)
+      // } else {
+      //   console.error('error sending message to watch', err)
+      // }
+    })
+
+  }
+  render() {
+    return (
+      <>
+        <StatusBar backgroundColor="blue" barStyle="light-content" style={{ flex: 1 }} />
+        <View>
+          <ScrollView>
+            <GeneBuilder sendMessage={this.sendMessage} />
+          </ScrollView>
+        </View>
+      </>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -109,6 +104,40 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  row: {
+    flexDirection: 'row'
+  },
+  dropZone: {
+    height: 200,
+    backgroundColor: "#00334d"
+  },
+  text: {
+    marginTop: 25,
+    marginLeft: 5,
+    marginRight: 5,
+    textAlign: "center",
+    color: "#fff",
+    fontSize: 25,
+    fontWeight: "bold"
+  },
+  webView: {
+    marginTop: 20,
+    height: 200,
+    maxHeight: 200,
+    flex: 1
+  }
 });
 
 export default App;
+
+
+/*
+
+<View style={styles.dropZone}>
+        </View>
+        <View style={styles.row}>
+          <GeneProperty />
+          <GeneProperty />
+
+        </View>
+ */
